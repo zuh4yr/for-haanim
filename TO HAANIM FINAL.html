@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Sweet Message for Haanim</title>
+    <style>
+        :root {
+            --cocoa: #4e2c1c;
+            --wrapper: #ff69b4;
+            --gold: #ffd700;
+        }
+
+        body {
+            background-color: #fce4ec;
+            background-image: radial-gradient(#f8bbd0 1px, transparent 1px);
+            background-size: 20px 20px;
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .bg-heart {
+            position: absolute;
+            color: #ffb6c1;
+            font-size: 20px;
+            user-select: none;
+            z-index: 1;
+            animation: float 6s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        #chocolate-wrapper {
+            position: relative;
+            width: 300px;
+            height: 180px;
+            background: var(--wrapper);
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            transition: transform 0.3s;
+        }
+
+        .wrapper-text {
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            border: 2px solid white;
+            padding: 10px;
+            font-family: sans-serif;
+            letter-spacing: 2px;
+        }
+
+        #paper {
+            background: var(--cocoa);
+            width: 90%;
+            max-width: 500px;
+            min-height: 75vh;
+            padding: 30px;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.2);
+            position: relative;
+            display: none;
+            flex-direction: column;
+            animation: unwrap 1s ease-out;
+            z-index: 10;
+            border-radius: 8px;
+            margin: 20px;
+            color: var(--gold);
+        }
+
+        @keyframes unwrap {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        h1 { 
+            color: var(--gold); 
+            font-family: 'Dancing Script', cursive; 
+            border-bottom: 1px solid rgba(255,215,0,0.3); 
+            padding-bottom: 10px; 
+            font-size: 2.2rem;
+        }
+        
+        p { line-height: 1.6; font-size: 1.1rem; }
+
+        .compliment-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 3px solid var(--gold);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 20px;
+        }
+
+        button {
+            background: var(--gold);
+            color: var(--cocoa);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: serif;
+            transition: opacity 0.3s;
+        }
+
+        button:disabled {
+            opacity: 0;
+            cursor: default;
+        }
+
+        .hidden { display: none; }
+        
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: var(--gold);
+            margin-top: 15px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="hearts-bg"></div>
+
+    <div id="chocolate-wrapper" onclick="unwrapChocolate()">
+        <div class="wrapper-text">
+            HAANIM'S SPECIAL<br>
+            <span style="font-size: 0.7rem;">TAP TO UNWRAP</span>
+        </div>
+    </div>
+
+    <div id="paper">
+        <div id="content1" class="section">
+            <h1>Dear Haanim,</h1>
+            <p>I’ve thought about how to say this for a long time, and I genuinely mean this: <strong>no girl I’ve ever seen in my life has ever come close to the beauty of you.</strong></p>
+            <div class="compliment-box">
+                There’s something about the way your face shines in a crowd full of people. Even when the halls are packed, you’re the only person I actually see.
+            </div>
+            <div class="nav-buttons">
+                <button disabled>←</button>
+                <button onclick="showSection(2)">→</button>
+            </div>
+        </div>
+
+        <div id="content2" class="section hidden">
+            <h1>The Warrior Princess</h1>
+            <p>It's not just that you're beautiful; I've noticed how sporty and athletic you are. <strong>I like that a lot about u.</strong></p>
+            <div class="compliment-box">
+                I know you do karate, but here's a secret... I actually have a brown belt. 🥋<br><br>
+                If we ever <em>do</em> spar, please go easy on me 🧎‍♂️‍➡️
+            </div>
+            <div class="nav-buttons">
+                <button onclick="showSection(1)">←</button>
+                <button onclick="showSection(3)">→</button>
+            </div>
+        </div>
+
+        <div id="content3" class="section hidden">
+            <h1>For You</h1>
+            <div class="compliment-box" style="font-style: italic; text-align: center;">
+                A princess's name, a warrior's heart,<br>
+                You’re a masterpiece, a work of art.<br>
+                With a smile that glows and eyes so bright,<br>
+                You’re everything that’s good and right.
+            </div>
+            <p style="font-size: 0.8rem; text-align: center; color: #ffb6c1;">(yes this was made by me 😬)</p>
+            <div class="nav-buttons">
+                <button onclick="showSection(2)">←</button>
+                <button onclick="showSection(4)">→</button>
+            </div>
+        </div>
+
+        <div id="content4" class="section hidden">
+            <h1>A quick question...</h1>
+            <p>I've heard you're the sweetest and kindest person ever, but I have to be sure about one thing.</p>
+            <p style="text-align: center; font-size: 1.4rem; margin: 30px 0;"><strong>Do you have a heart?</strong></p>
+            <div style="text-align: center;">
+                <button onclick="showFinal('yes')">Yes, I do</button>
+                <button onclick="showFinal('no')" style="margin-left: 10px; background: #6b4433; color: white;">No, I don't</button>
+            </div>
+            <div class="nav-buttons">
+                <button onclick="showSection(3)">←</button>
+                <button disabled>→</button>
+            </div>
+        </div>
+
+        <div id="final-result" class="section hidden">
+            <h1 id="punchline" style="text-align: center; font-size: 1.5rem; margin-top: 20px; border: none;"></h1>
+            <div style="margin-top: 30px; text-align: center; border-top: 1px solid rgba(255,215,0,0.2); padding-top: 20px;">
+                <p style="font-size: 1.6rem; font-family: 'Dancing Script', cursive; color: var(--gold); margin-bottom: 5px;">
+                    Maybe we can talk in person?
+                </p>
+                <p style="color: #ffb6c1; font-size: 0.9rem; font-style: italic; margin-top: 0;">
+                    (if my nerves don't eat me alive)
+                </p>
+                <div class="signature">From: the boy with the staring problem</div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    let audioCtx;
+
+    function playMusicBoxNote(freq, start, duration) {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        
+        // Sine wave for a pure, sweet music box chime
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, start);
+        
+        // Fast attack, long decay (like a bell or music box)
+        gain.gain.setValueAtTime(0, start);
+        gain.gain.linearRampToValueAtTime(0.3, start + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, start + duration);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        osc.start(start);
+        osc.stop(start + duration);
+    }
+
+    function playCuteSong() {
+        audioCtx = new AudioCtx();
+        const now = audioCtx.currentTime;
+        
+        // A bouncy, happy C-Major melody
+        const melody = [
+            { f: 523.25, d: 0.4 }, { f: 659.25, d: 0.4 }, { f: 783.99, d: 0.4 }, { f: 1046.50, d: 0.8 },
+            { f: 880.00, d: 0.4 }, { f: 783.99, d: 0.4 }, { f: 659.25, d: 0.8 },
+            { f: 587.33, d: 0.4 }, { f: 659.25, d: 0.4 }, { f: 698.46, d: 0.4 }, { f: 783.99, d: 0.8 },
+            { f: 523.25, d: 1.2 }
+        ];
+
+        let time = now;
+        // Plays through the cute melody 6 times for a full song feel
+        for(let loop = 0; loop < 6; loop++) {
+            melody.forEach(note => {
+                playMusicBoxNote(note.f, time, note.d * 2);
+                time += note.d;
+            });
+            time += 0.5; // Little pause between "verses"
+        }
+    }
+
+    function unwrapChocolate() {
+        // Crinkle sound simulation
+        if(!audioCtx) audioCtx = new AudioCtx();
+        const noise = audioCtx.createOscillator();
+        const noiseGain = audioCtx.createGain();
+        noise.type = 'square';
+        noise.frequency.setValueAtTime(150, audioCtx.currentTime);
+        noiseGain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+        noise.connect(noiseGain);
+        noiseGain.connect(audioCtx.destination);
+        noise.start();
+        noise.stop(audioCtx.currentTime + 0.1);
+
+        playCuteSong();
+        document.getElementById('chocolate-wrapper').style.display = 'none';
+        document.getElementById('paper').style.display = 'flex';
+    }
+
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'bg-heart';
+        heart.innerHTML = '❤';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        document.getElementById('hearts-bg').appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 6000);
+    }
+    setInterval(createHeart, 400);
+
+    function showSection(num) {
+        document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+        document.getElementById('content' + num).classList.remove('hidden');
+    }
+
+    function showFinal(answer) {
+        document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+        const finalDiv = document.getElementById('final-result');
+        const punchline = document.getElementById('punchline');
+        punchline.innerText = (answer === 'yes') ? "Then why are you stealing mine?? 🤨" : "No wonder you're stealing my heart 😐";
+        finalDiv.classList.remove('hidden');
+    }
+</script>
+</body>
+</html>
+
